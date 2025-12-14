@@ -1,9 +1,9 @@
 import expressRidMiddleware from "../index.js";
 import supertest from 'supertest';
 import express from 'express';
-import test, {it} from "node:test";
+import test from "node:test";
 
-test( "Testing Express Rid Middleware without RID on headers", (t) => {
+test( "Testing Express Rid Middleware without RID on headers",  async (t) => {
     const app = express();
     app.use(expressRidMiddleware())
 
@@ -11,22 +11,22 @@ test( "Testing Express Rid Middleware without RID on headers", (t) => {
         res.status(200).json({ response: 'Index API call' });
     });
 
-    it('Should return 200', async () => {
+    await t.test('Should return 200', async () => {
         const res = await supertest(app).get('/')
         t.assert.equal(res.status, 200);
     })
 
-    it('Should not return x-request-id header', async () => {
+    await t.test('Should return JSON response', async () => {
         const res = await supertest(app).get('/')
         t.assert.equal(res.headers['x-request-id'], undefined);
     })
 
-    it('Should not return x-request-id header', async () => {
+    await t.test('Should not return x-request-id header', async () => {
         const res = await supertest(app).get('/')
         t.assert.equal(res.headers['x-request-id'], undefined);
     })
 
-    it('Should return rid in request object', async () => {
+    await t.test('Should return rid in request object', async () => {
         const req = {};
         const res = {};
         const next = test.mock.fn();
@@ -36,7 +36,7 @@ test( "Testing Express Rid Middleware without RID on headers", (t) => {
     })
 })
 
-test('Testing Express Rid Middleware with RID on headers', (t) => {
+test('Testing Express Rid Middleware with RID on headers', async (t) => {
     const app = express();
     app.use(expressRidMiddleware({ setResponseHeader: true}))
 
@@ -44,7 +44,7 @@ test('Testing Express Rid Middleware with RID on headers', (t) => {
         res.status(200).json({ response: 'Index API call' });
     });
 
-    it('Should return defined x-request-id header', async () => {
+    await t.test('Should return defined x-request-id header', async () => {
         const res = await supertest(app).get('/')
         t.assert.notEqual(res.headers['x-request-id'], undefined);
     })
