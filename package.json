@@ -1,6 +1,6 @@
 {
   "name": "express-rid-middleware",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Express middleware to include RID on request and response headers",
   "main": "index.js",
   "scripts": {
