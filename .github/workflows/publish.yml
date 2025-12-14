@@ -22,7 +22,8 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
-      # Ensure npm 11.5.1 or later is installed
+      - name: Clear auth token for OIDC
+        run: echo "NODE_AUTH_TOKEN=" >> $GITHUB_ENV
       - name: Update npm
         run: npm install -g npm@latest
       - run: npm ci
