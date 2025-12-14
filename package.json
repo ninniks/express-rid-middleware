@@ -1,0 +1,25 @@
+{
+  "name": "express-rid-middleware",
+  "version": "1.0.1",
+  "description": "Simple Express middleware to include RID on request and response headers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test tests/*.js"
+  },
+  "keywords": [
+    "RID",
+    "Express",
+    "middleware",
+    "header"
+  ],
+  "author": "ninniks",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "rid": "^0.0.1"
+  },
+  "devDependencies": {
+    "express": "^5.2.1",
+    "supertest": "^7.1.4"
+  }
+}
