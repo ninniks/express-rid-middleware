@@ -21,5 +21,9 @@
   "devDependencies": {
     "express": "^5.2.1",
     "supertest": "^7.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ninniks/express-rid-middleware"
   }
 }
